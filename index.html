@@ -7,223 +7,188 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;900&display=swap');
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Heebo',sans-serif;background:#fff9f0;color:#222;direction:rtl;min-height:100vh;}
-.page-wrap{max-width:760px;margin:0 auto;padding:20px 18px 60px;}
-
-/* HEADER */
-.ws-header{background:linear-gradient(135deg,#ff6b9d,#ffd93d);border-radius:22px;padding:18px 24px;margin-bottom:18px;display:flex;align-items:center;gap:16px;box-shadow:0 5px 18px rgba(255,107,157,.25);}
-.ws-header .ic{font-size:46px;flex-shrink:0;}
-.ws-header h1{font-size:clamp(16px,2.8vw,24px);font-weight:900;color:#fff;line-height:1.3;}
-.ws-header p{font-size:13px;color:rgba(255,255,255,.88);margin-top:4px;}
-
-/* ACTION BAR */
-.action-bar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap;}
-.btn{padding:10px 22px;border-radius:30px;border:none;cursor:pointer;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;transition:.2s;display:flex;align-items:center;gap:7px;}
+body{font-family:'Heebo',sans-serif;background:#fff9f0;color:#222;direction:rtl;}
+.wrap{max-width:760px;margin:0 auto;padding:20px 18px 60px;}
+.hdr{background:linear-gradient(135deg,#ff6b9d,#ffd93d);border-radius:22px;padding:16px 22px;margin-bottom:16px;display:flex;align-items:center;gap:14px;}
+.hdr h1{font-size:clamp(15px,2.5vw,22px);font-weight:900;color:#fff;line-height:1.3;}
+.hdr p{font-size:13px;color:rgba(255,255,255,.9);margin-top:3px;}
+.bar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.btn{padding:9px 20px;border-radius:30px;border:none;cursor:pointer;font-family:'Heebo',sans-serif;font-size:14px;font-weight:700;transition:.15s;}
 .btn:hover{transform:scale(1.04);}
-.btn:disabled{opacity:.4;transform:none;cursor:default;}
-.btn-check{background:linear-gradient(135deg,#6bcb77,#00b894);color:#fff;box-shadow:0 3px 12px rgba(107,203,119,.3);}
-.btn-reset{background:#fff;color:#888;border:2px solid #e0e0e0;}
-.btn-pdf{background:linear-gradient(135deg,#0984e3,#6c5ce7);color:#fff;box-shadow:0 3px 12px rgba(108,92,231,.25);}
-
-/* SCORE */
-#score-bar{display:none;background:#fff;border-radius:14px;padding:12px 20px;margin-bottom:18px;box-shadow:0 3px 10px rgba(0,0,0,.07);border:2px solid #6bcb77;font-size:17px;font-weight:700;color:#2e7d32;text-align:center;}
-
-/* SECTION */
-.section{background:#fff;border-radius:20px;padding:18px 22px;margin-bottom:16px;box-shadow:0 3px 14px rgba(0,0,0,.07);}
-.sec-title{font-size:16px;font-weight:900;margin-bottom:14px;display:flex;align-items:center;gap:9px;}
-.sec-badge{background:#ffd93d;color:#333;padding:3px 11px;border-radius:20px;font-size:12px;font-weight:700;}
-
-/* GRIDS */
-.ex-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(185px,1fr));gap:11px;}
-.ex-item{background:#f8f9fa;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:7px;font-size:clamp(15px,2.2vw,20px);font-weight:900;direction:ltr;}
-.ex-item input{width:80px;border:3px solid #ddd;border-radius:9px;padding:5px 7px;font-family:'Heebo',sans-serif;font-size:clamp(15px,2.2vw,20px);font-weight:900;text-align:center;outline:none;transition:.2s;background:#fff;direction:ltr;}
-.ex-item input:focus{border-color:#ffd93d;box-shadow:0 0 0 3px rgba(255,217,61,.2);}
-
-.mf-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:11px;}
-.mf-item{background:#f3f0ff;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:7px;font-size:clamp(15px,2.2vw,19px);font-weight:900;direction:ltr;}
-.mf-item input{width:75px;border:3px solid #c5b9f5;border-radius:9px;padding:5px 7px;font-family:'Heebo',sans-serif;font-size:clamp(15px,2.2vw,19px);font-weight:900;text-align:center;outline:none;background:#fff;transition:.2s;direction:ltr;}
-.mf-item input:focus{border-color:#6c5ce7;box-shadow:0 0 0 3px rgba(108,92,231,.18);}
-
-input.correct{border-color:#6bcb77!important;background:#f0fff4!important;color:#2e7d32!important;}
-input.wrong{border-color:#ff6b9d!important;background:#fff0f3!important;color:#c62828!important;}
-select.correct{border-color:#6bcb77!important;background:#f0fff4!important;}
-select.wrong{border-color:#ff6b9d!important;background:#fff0f3!important;}
-
-/* COMPARE */
-.cmp-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:11px;}
-.cmp-item{background:#e3f2fd;border-radius:12px;padding:12px 16px;display:flex;align-items:center;gap:9px;direction:ltr;font-size:clamp(14px,2vw,18px);font-weight:900;}
-.cmp-item select{border:3px solid #90caf9;border-radius:9px;padding:5px 8px;font-family:'Heebo',sans-serif;font-size:17px;font-weight:900;background:#fff;cursor:pointer;outline:none;}
-
-/* WORD PROBLEM */
-.wp-box{background:#fff8e1;border-radius:14px;padding:15px 18px;margin-bottom:12px;border:2px solid #ffd93d;}
-.wp-box:last-child{margin-bottom:0;}
-.wp-box p{font-size:15px;line-height:1.65;margin-bottom:10px;}
-.wp-q{font-weight:700;color:#e65100;}
-.wp-row{display:flex;align-items:center;gap:9px;flex-wrap:wrap;direction:ltr;}
-.wp-row input{border:3px solid #ffd93d;border-radius:9px;padding:6px 8px;font-family:'Heebo',sans-serif;font-size:17px;font-weight:900;text-align:center;width:100px;outline:none;background:#fff;direction:ltr;}
-.wp-row input:focus{border-color:#ff6b9d;}
-
-/* CHALLENGE */
-.ch-box{background:linear-gradient(135deg,#f3e5f5,#ede7f6);border-radius:16px;padding:18px 20px;border:2px solid #ce93d8;}
-.ch-row{display:flex;align-items:center;gap:10px;margin:9px 0;font-size:clamp(15px,2.2vw,19px);font-weight:900;direction:ltr;}
-.ch-row input{width:76px;border:3px solid #ce93d8;border-radius:9px;padding:5px 8px;font-family:'Heebo',sans-serif;font-size:clamp(15px,2.2vw,19px);font-weight:900;text-align:center;background:#fff;outline:none;direction:ltr;}
-.ch-row input:focus{border-color:#6c5ce7;}
-
+.bc{background:linear-gradient(135deg,#6bcb77,#00b894);color:#fff;}
+.br{background:#fff;color:#888;border:2px solid #ddd;}
+.bp{background:linear-gradient(135deg,#0984e3,#6c5ce7);color:#fff;}
+#sb{display:none;background:#fff;border-radius:14px;padding:11px 18px;margin-bottom:16px;border:2px solid #6bcb77;font-size:16px;font-weight:700;color:#2e7d32;text-align:center;}
+.sec{background:#fff;border-radius:18px;padding:16px 20px;margin-bottom:14px;box-shadow:0 3px 12px rgba(0,0,0,.07);}
+.st{font-size:15px;font-weight:900;margin-bottom:12px;display:flex;align-items:center;gap:8px;}
+.sb{background:#ffd93d;color:#333;padding:2px 10px;border-radius:20px;font-size:12px;font-weight:700;}
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;}
+.ei{background:#f8f9fa;border-radius:11px;padding:11px 13px;display:flex;align-items:center;gap:6px;font-size:clamp(14px,2vw,19px);font-weight:900;direction:ltr;}
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(195px,1fr));gap:10px;}
+.mi{background:#f3f0ff;border-radius:11px;padding:11px 13px;display:flex;align-items:center;gap:6px;font-size:clamp(14px,2vw,18px);font-weight:900;direction:ltr;}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px;}
+.ci{background:#e3f2fd;border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:8px;direction:ltr;font-size:clamp(13px,1.8vw,17px);font-weight:900;}
+input[type=text],input[inputmode]{border:3px solid #ddd;border-radius:8px;padding:5px 6px;font-family:'Heebo',sans-serif;font-size:inherit;font-weight:900;text-align:center;outline:none;background:#fff;direction:ltr;width:72px;transition:.2s;}
+input:focus{border-color:#ffd93d;box-shadow:0 0 0 3px rgba(255,217,61,.2);}
+select{border:3px solid #90caf9;border-radius:8px;padding:5px 7px;font-family:'Heebo',sans-serif;font-size:17px;font-weight:900;background:#fff;outline:none;}
+.correct{border-color:#6bcb77!important;background:#f0fff4!important;color:#2e7d32!important;}
+.wrong{border-color:#ff6b9d!important;background:#fff0f3!important;color:#c62828!important;}
+.wp{background:#fff8e1;border-radius:13px;padding:14px 16px;border:2px solid #ffd93d;}
+.wp p{font-size:15px;line-height:1.6;margin-bottom:10px;}
+.wq{font-weight:700;color:#e65100;}
+.wr{display:flex;align-items:center;gap:8px;flex-wrap:wrap;direction:ltr;margin-top:6px;}
+.wr input{width:95px;}
+.wr span{font-size:14px;color:#555;font-weight:700;}
+.ch{background:linear-gradient(135deg,#f3e5f5,#ede7f6);border-radius:15px;padding:16px 18px;border:2px solid #ce93d8;}
+.cr{display:flex;align-items:center;gap:9px;margin:8px 0;font-size:clamp(14px,2vw,18px);font-weight:900;direction:ltr;}
+.cr input{width:72px;}
 @media print{
-  html,body{background:#fff!important;width:100%!important;margin:0!important;padding:0!important;}
-  .action-bar,#score-bar{display:none!important;}
-  .page-wrap{max-width:100%!important;width:100%!important;padding:4px 6px!important;margin:0!important;}
-  .ws-header{background:none!important;border:2px solid #333!important;box-shadow:none!important;padding:10px 14px!important;}
-  .ws-header h1,.ws-header p{color:#000!important;text-shadow:none!important;}
-  .ws-header .ic{font-size:32px!important;}
-  .section{box-shadow:none!important;border:1.5px solid #ccc!important;break-inside:avoid;margin-bottom:10px!important;padding:12px 14px!important;}
-  .ex-grid,.mf-grid,.cmp-grid{grid-template-columns:repeat(3,1fr)!important;gap:7px!important;}
-  .ex-item,.mf-item,.cmp-item{padding:8px 10px!important;font-size:13pt!important;}
-  .ex-item input,.mf-item input,.cmp-item select,.wp-row input,.ch-row input{font-size:13pt!important;width:65px!important;padding:4px 5px!important;}
-  .ch-row{font-size:13pt!important;}
-  .wp-box{padding:10px 12px!important;}
-  .ch-box{padding:12px 14px!important;}
-  @page{size:A4 portrait;margin:12mm 10mm;}
+  html,body{background:#fff!important;margin:0;padding:0;}
+  .bar,#sb{display:none!important;}
+  .wrap{max-width:100%!important;padding:4px 6px!important;margin:0!important;}
+  .hdr{background:none!important;border:2px solid #333!important;box-shadow:none!important;padding:8px 12px!important;}
+  .hdr h1,.hdr p{color:#000!important;text-shadow:none!important;}
+  .sec{box-shadow:none!important;border:1.5px solid #ccc!important;break-inside:avoid;margin-bottom:9px!important;padding:10px 12px!important;}
+  .eg,.mg,.cg{grid-template-columns:repeat(3,1fr)!important;gap:6px!important;}
+  .ei,.mi,.ci,.cr{font-size:12pt!important;padding:7px 9px!important;}
+  input,select{font-size:12pt!important;width:62px!important;padding:3px 4px!important;}
+  .wr input{width:80px!important;}
+  .wp{padding:8px 10px!important;}
+  .ch{padding:10px 12px!important;}
+  @page{size:A4 portrait;margin:11mm 9mm;}
 }
 </style>
 </head>
 <body>
-<div class="page-wrap">
+<div class="wrap">
 
-  <div class="ws-header">
-    <div class="ic">🐰</div>
-    <div>
-      <h1>דף עבודה — כפל ב-10, 100, 1,000</h1>
-      <p>כיתה ד׳ &nbsp;|&nbsp; עמ׳ 84 ו-86 &nbsp;&nbsp; שם: _________________ &nbsp;&nbsp; תאריך: _________</p>
-    </div>
+<div class="hdr">
+  <div style="font-size:44px;flex-shrink:0">🐰</div>
+  <div>
+    <h1>דף עבודה — כפל ב-10, 100, 1,000</h1>
+    <p>כיתה ד׳ &nbsp;|&nbsp; עמ׳ 84 ו-86 &nbsp;&nbsp; שם: _________________ &nbsp;&nbsp; תאריך: _________</p>
   </div>
-
-  <div class="action-bar">
-    <button class="btn btn-check" onclick="checkAll()">✅ בדוק תשובות</button>
-    <button class="btn btn-reset" onclick="resetAll()">🔄 נקה</button>
-    <button class="btn btn-pdf" onclick="window.print()">📄 הדפס / PDF</button>
-  </div>
-
-  <div id="score-bar"></div>
-
-  <!-- א׳ — חישוב ישיר עמ׳ 84 -->
-  <div class="section">
-    <div class="sec-title"><span class="sec-badge">עמ׳ 84</span> א׳ — חשבו וכתבו 🧮</div>
-    <div class="ex-grid">
-      <div class="ex-item">8 × 10 = <input data-ans="80" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">8 × 100 = <input data-ans="800" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">8 × 1,000 = <input data-ans="8000" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">33 × 10 = <input data-ans="330" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">49 × 100 = <input data-ans="4900" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">19 × 1,000 = <input data-ans="19000" inputmode="numeric" placeholder="?"></div>
-    </div>
-  </div>
-
-  <!-- ב׳ — גורם חסר עמ׳ 84 -->
-  <div class="section">
-    <div class="sec-title"><span class="sec-badge">עמ׳ 84</span> ב׳ — מצא/י את הגורם החסר 🔍</div>
-    <div class="mf-grid">
-      <div class="mf-item"><input data-ans="5" inputmode="numeric" placeholder="?"> × 100 = 500</div>
-      <div class="mf-item">6 × <input data-ans="1000" inputmode="numeric" placeholder="?"> = 6,000</div>
-      <div class="mf-item"><input data-ans="80" inputmode="numeric" placeholder="?"> × 10 = 800</div>
-      <div class="mf-item">50 × <input data-ans="100" inputmode="numeric" placeholder="?"> = 5,000</div>
-    </div>
-  </div>
-
-  <!-- ג׳ — השוואה עמ׳ 84 -->
-  <div class="section">
-    <div class="sec-title"><span class="sec-badge">עמ׳ 84</span> ג׳ — השוו עם &gt;, &lt; או = ⚖️</div>
-    <div class="cmp-grid">
-      <div class="cmp-item">5 × 10 <select data-ans="<"><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 5 × 100</div>
-      <div class="cmp-item">3 × 1,000 <select data-ans="="><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 3,000</div>
-      <div class="cmp-item">20 × 100 <select data-ans="="><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 2 × 1,000</div>
-      <div class="cmp-item">4 × 1,000 <select data-ans=">"><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 4 × 100</div>
-    </div>
-  </div>
-
-  <!-- ד׳ — מספרים גדולים עמ׳ 86 -->
-  <div class="section">
-    <div class="sec-title"><span class="sec-badge">עמ׳ 86</span> ד׳ — מספרים גדולים 💪</div>
-    <div class="ex-grid">
-      <div class="ex-item">10 × 233 = <input data-ans="2330" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">10 × 407 = <input data-ans="4070" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">120 × 100 = <input data-ans="12000" inputmode="numeric" placeholder="?"></div>
-      <div class="ex-item">83 × <input data-ans="10" inputmode="numeric" placeholder="?"> = 830</div>
-      <div class="ex-item">304 × <input data-ans="100" inputmode="numeric" placeholder="?"> = 30,400</div>
-      <div class="ex-item">60 × <input data-ans="1000" inputmode="numeric" placeholder="?"> = 60,000</div>
-    </div>
-  </div>
-
-  <!-- ה׳ — בעיה מילולית עמ׳ 84+86 -->
-  <div class="section">
-    <div class="sec-title"><span class="sec-badge">עמ׳ 84–86</span> ה׳ — בעיה מילולית 📖</div>
-    <div class="wp-box">
-      <p>🎮 <strong>Roblox:</strong> נועה קנתה 15 חבילות של 100 Robux ו-11 חבילות של 10 Robux.<br>
-      <span class="wp-q">כמה Robux יש לה בסך הכל?</span></p>
-      <div class="wp-row">
-        <span style="font-weight:700">15 × 100 =</span>
-        <input data-ans="1500" inputmode="numeric" placeholder="?">
-      </div>
-      <div class="wp-row" style="margin-top:8px">
-        <span style="font-weight:700">11 × 10 =</span>
-        <input data-ans="110" inputmode="numeric" placeholder="?">
-      </div>
-      <div class="wp-row" style="margin-top:8px">
-        <span style="font-weight:700">סה״כ:</span>
-        <input data-ans="1610" inputmode="numeric" placeholder="?">
-        <span style="font-size:14px;color:#555">Robux</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- ו׳ — אתגר -->
-  <div class="section">
-    <div class="sec-title"><span class="sec-badge">אתגר ⭐</span> ו׳ — כמה דרכים להגיע ל-8,000?</div>
-    <div class="ch-box">
-      <div class="ch-row"><input data-ans="8" inputmode="numeric" placeholder="?"> × 1,000 = 8,000</div>
-      <div class="ch-row"><input data-ans="80" inputmode="numeric" placeholder="?"> × 100 = 8,000</div>
-      <div class="ch-row"><input data-ans="800" inputmode="numeric" placeholder="?"> × 10 = 8,000</div>
-      <div class="ch-row"><input data-ans="8000" inputmode="numeric" placeholder="?"> × 1 = 8,000</div>
-    </div>
-  </div>
-
 </div>
 
+<div class="bar">
+  <button class="btn bc" onclick="chk()">✅ בדוק תשובות</button>
+  <button class="btn br" onclick="rst()">🔄 נקה</button>
+  <button class="btn bp" onclick="window.print()">📄 הדפס / PDF</button>
+</div>
+<div id="sb"></div>
+
+<!-- א -->
+<div class="sec">
+  <div class="st"><span class="sb">עמ׳ 84</span> א׳ — חשבו וכתבו 🧮</div>
+  <div class="eg">
+    <div class="ei">8 × 10 = <input data-a="80" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">8 × 100 = <input data-a="800" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">8 × 1,000 = <input data-a="8000" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">33 × 10 = <input data-a="330" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">49 × 100 = <input data-a="4900" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">19 × 1,000 = <input data-a="19000" inputmode="numeric" placeholder="?"></div>
+  </div>
+</div>
+
+<!-- ב -->
+<div class="sec">
+  <div class="st"><span class="sb">עמ׳ 84</span> ב׳ — מצא/י את הגורם החסר 🔍</div>
+  <div class="mg">
+    <div class="mi"><input data-a="5" inputmode="numeric" placeholder="?"> × 100 = 500</div>
+    <div class="mi">6 × <input data-a="1000" inputmode="numeric" placeholder="?"> = 6,000</div>
+    <div class="mi"><input data-a="80" inputmode="numeric" placeholder="?"> × 10 = 800</div>
+    <div class="mi">50 × <input data-a="100" inputmode="numeric" placeholder="?"> = 5,000</div>
+  </div>
+</div>
+
+<!-- ג -->
+<div class="sec">
+  <div class="st"><span class="sb">עמ׳ 84</span> ג׳ — השוו עם &gt;, &lt; או = ⚖️</div>
+  <div class="cg">
+    <div class="ci">5 × 10 <select data-a="<"><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 5 × 100</div>
+    <div class="ci">3 × 1,000 <select data-a="="><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 3,000</div>
+    <div class="ci">20 × 100 <select data-a="="><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 2 × 1,000</div>
+    <div class="ci">4 × 1,000 <select data-a=">"><option value="">?</option><option>&gt;</option><option>&lt;</option><option>=</option></select> 4 × 100</div>
+  </div>
+</div>
+
+<!-- ד -->
+<div class="sec">
+  <div class="st"><span class="sb">עמ׳ 86</span> ד׳ — מספרים גדולים 💪</div>
+  <div class="eg">
+    <div class="ei">10 × 233 = <input data-a="2330" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">10 × 407 = <input data-a="4070" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">120 × 100 = <input data-a="12000" inputmode="numeric" placeholder="?"></div>
+    <div class="ei">83 × <input data-a="10" inputmode="numeric" placeholder="?"> = 830</div>
+    <div class="ei">304 × <input data-a="100" inputmode="numeric" placeholder="?"> = 30,400</div>
+    <div class="ei">60 × <input data-a="1000" inputmode="numeric" placeholder="?"> = 60,000</div>
+  </div>
+</div>
+
+<!-- ה -->
+<div class="sec">
+  <div class="st"><span class="sb">עמ׳ 84–86</span> ה׳ — בעיה מילולית 📖</div>
+  <div class="wp">
+    <p>🎮 <strong>Roblox:</strong> נועה קנתה 15 חבילות של 100 Robux ו-11 חבילות של 10 Robux.<br>
+    <span class="wq">כמה Robux יש לה בסך הכל?</span></p>
+    <div class="wr">
+      <span>15 × 100 =</span>
+      <input data-a="1500" inputmode="numeric" placeholder="?">
+    </div>
+    <div class="wr" style="margin-top:7px">
+      <span>11 × 10 =</span>
+      <input data-a="110" inputmode="numeric" placeholder="?">
+    </div>
+    <div class="wr" style="margin-top:7px">
+      <span>סה״כ:</span>
+      <input data-a="1610" inputmode="numeric" placeholder="?">
+      <span>Robux</span>
+    </div>
+  </div>
+</div>
+
+<!-- ו -->
+<div class="sec">
+  <div class="st"><span class="sb">אתגר ⭐</span> ו׳ — כמה דרכים להגיע ל-8,000?</div>
+  <div class="ch">
+    <div class="cr"><input data-a="8" inputmode="numeric" placeholder="?"> × 1,000 = 8,000</div>
+    <div class="cr"><input data-a="80" inputmode="numeric" placeholder="?"> × 100 = 8,000</div>
+    <div class="cr"><input data-a="800" inputmode="numeric" placeholder="?"> × 10 = 8,000</div>
+    <div class="cr"><input data-a="8000" inputmode="numeric" placeholder="?"> × 1 = 8,000</div>
+  </div>
+</div>
+
+</div>
 <script>
-function norm(v){return v.replace(/[,\s]/g,'').trim();}
-function checkAll(){
-  let tot=0,ok=0;
-  document.querySelectorAll('input[data-ans]').forEach(inp=>{
-    const v=norm(inp.value);
-    if(!v){inp.className='';return;}
-    tot++;
-    if(v===norm(inp.dataset.ans)){inp.classList.add('correct');inp.classList.remove('wrong');ok++;}
-    else{inp.classList.add('wrong');inp.classList.remove('correct');}
+function n(v){return v.replace(/[,\s]/g,'').trim();}
+function chk(){
+  let t=0,ok=0;
+  document.querySelectorAll('input[data-a]').forEach(i=>{
+    if(!i.value.trim()){i.className='';return;}
+    t++;
+    n(i.value)===n(i.dataset.a)?(i.className='correct',ok++):(i.className='wrong');
   });
-  document.querySelectorAll('select[data-ans]').forEach(sel=>{
-    if(!sel.value){sel.className='';return;}
-    tot++;
-    if(sel.value===sel.dataset.ans){sel.classList.add('correct');sel.classList.remove('wrong');ok++;}
-    else{sel.classList.add('wrong');sel.classList.remove('correct');}
+  document.querySelectorAll('select[data-a]').forEach(s=>{
+    if(!s.value){s.className='';return;}
+    t++;
+    s.value===s.dataset.a?(s.className='correct',ok++):(s.className='wrong');
   });
-  const bar=document.getElementById('score-bar');
-  if(tot>0){
-    const pct=Math.round(ok/tot*100);
-    const e=pct===100?'🏆':pct>=80?'😊':pct>=50?'👍':'💪';
-    bar.innerHTML=`${e} ענית נכון על <strong>${ok}</strong> מתוך <strong>${tot}</strong> (${pct}%)`;
-    bar.style.display='block';
+  if(t>0){
+    const p=Math.round(ok/t*100),e=p===100?'🏆':p>=80?'😊':p>=50?'👍':'💪';
+    const sb=document.getElementById('sb');
+    sb.innerHTML=e+' ענית נכון על <strong>'+ok+'</strong> מתוך <strong>'+t+'</strong> ('+p+'%)';
+    sb.style.display='block';
   }
 }
-function resetAll(){
-  document.querySelectorAll('input[data-ans]').forEach(i=>{i.value='';i.className='';});
-  document.querySelectorAll('select[data-ans]').forEach(s=>{s.value='';s.className='';});
-  document.getElementById('score-bar').style.display='none';
+function rst(){
+  document.querySelectorAll('input[data-a]').forEach(i=>{i.value='';i.className='';});
+  document.querySelectorAll('select[data-a]').forEach(s=>{s.value='';s.className='';});
+  document.getElementById('sb').style.display='none';
 }
 document.addEventListener('keydown',e=>{
   if(e.key==='Enter'){
-    const all=[...document.querySelectorAll('input,select')];
-    const i=all.indexOf(document.activeElement);
-    if(i>-1&&i<all.length-1)all[i+1].focus();
+    const a=[...document.querySelectorAll('input,select')],i=a.indexOf(document.activeElement);
+    if(i>-1&&i<a.length-1)a[i+1].focus();
   }
 });
 </script>
